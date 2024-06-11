@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<head>
+<title>College Message Board</title>
+<meta charset='utf-8'>
+<script>
+function validateForm(f)
+{
+var rollNumber=f.rollNumber.value.trim();
+var name=f.name.value.trim();
+var rollNumberErrorSection=document.getElementById('rollNumberErrorSection');
+var nameErrorSection=document.getElementById('nameErrorSection');
+var errorSection=document.getElementById('errorMessage');
+rollNumberErrorSection.innerHTML='';
+nameErrorSection.innerHTML='';
+errorSection.innerHTML='';
+var valid=true;
+if(rollNumber.length==0)
+{
+valid=false;
+rollNumberErrorSection.innerHTML='Required';
+}
+if(name.length==0)
+{
+valid=false;
+nameErrorSection.innerHTML='Required';
+}
+if(rollNumber.length>0)
+{
+var e=0;
+var validSet='0123456789';
+while(e<rollNumber.length)
+{
+if(validSet.indexOf(rollNumber.charAt(e))==-1)
+{
+valid=false;
+rollNumberErrorSection.innerHTML='Should be a number';
+break;
+}
+e++;
+}
+}
+return valid;
+}
+</script>
+</head>
+<body>
+<h1>Administration</h1>
+<table width='100%' border='0'>
+<tr>
+<td><h3>Student (Add Module)</h3></td>
+<td align='right'><a href='logout' >Logout</a></td>
+</tr>
+</table>
+<span style='color:red' id='errorMessage'>$$${errorMessage}</span>
+<form action='addStudent' method='post' onsubmit='return validateForm(this)'>
+<table>
+<tr>
+<td>Roll Number</td>
+<td><input type='text' name='rollNumber' id='rollNumber' value='$$${rollNumber}' >
+<span id='rollNumberErrorSection' style='color:red'></span></td>
+</tr>
+<tr>
+<td>Name</td>
+<td><input type='text' name='name' id='name' value='$$${name}'>
+<span id='nameErrorSection' style='color:red'></span></td>
+</tr>
+<tr>
+<td colspan='2' align='center'><button type='submit'>Add</button></td>
+</tr>
+</table>
+</form>
+<br>
+<a href='AdminHomePage.html'>Home</a>
+</body>
+</HTML>
