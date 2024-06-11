@@ -1,0 +1,7 @@
+{
+"paths":[
+{"path":"/sample1","resource":"starter1.js"},
+{"path":"/sample2","resource":"starter2.js"},
+{"path":"/sample3","resource":"starter3.js"}
+]
+}
